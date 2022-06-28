@@ -72,7 +72,7 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h1>React Quiz</h1>
+      <h1>Quiz.me</h1>
 
       {gameOver || userAnswers.length === TOTALQUESTIONS ? (
         <button className="start" onClick={startTrivia}>
