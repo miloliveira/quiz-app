@@ -1,4 +1,4 @@
-# Quiz.Me
+# Quiz.me
 
 Quiz.me is a simple react.js trivia quiz application. 
 I used Open Trivia Database API to get all the questions and answers, and styled the application with Styled-Components.
