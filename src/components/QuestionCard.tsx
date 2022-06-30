@@ -1,12 +1,15 @@
 import React from "react";
-
+//importing types
 import { AnswerObject } from "../App";
+
+//importing styles
+import { ButtonWrapper } from "./QuestionCard.styles";
 
 type Props = {
   question: string;
   answers: string[];
-  callback: any;
-  userAnswer: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  userAnswer: AnswerObject | undefined;
   questionNr: number;
   totalQuestions: number;
 };
@@ -32,7 +35,11 @@ const QuestionCard: React.FC<Props> = ({
       {console.log("the answers are:", answers)}
       <div>
         {answers.map((answer) => (
-          <div key={answer}>
+          <ButtonWrapper
+            key={answer}
+            correct={userAnswer?.correctAnswer === answer}
+            userClicked={userAnswer?.answer === answer}
+          >
             <button
               disabled={userAnswer ? true : false}
               value={answer}
@@ -40,7 +47,7 @@ const QuestionCard: React.FC<Props> = ({
             >
               <span dangerouslySetInnerHTML={{ __html: answer }} />
             </button>
-          </div>
+          </ButtonWrapper>
         ))}
       </div>
     </>
