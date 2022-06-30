@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { fetchQuizQuestions } from "./API";
+import spinner from "./images/spinner_loading.gif";
 //importing components
 import QuestionCard from "./components/QuestionCard";
 
@@ -23,8 +24,8 @@ const App: React.FC = () => {
   const [score, setScore] = useState(0);
   const [gameOver, SetGameOver] = useState(true);
 
-  console.log(questions);
-
+  console.log("questions ar:", questions);
+  console.log("user Answers are:", userAnswers);
   const startTrivia = async () => {
     setLoading(true);
     SetGameOver(false);
@@ -75,14 +76,32 @@ const App: React.FC = () => {
       <h1>Quiz.me</h1>
 
       {gameOver || userAnswers.length === TOTALQUESTIONS ? (
-        <button className="start" onClick={startTrivia}>
-          Start
-        </button>
+        <div>
+          <>
+            {questions.map((el) => {
+              return (
+                <div key={el.question}>
+                  <p>{el.question}</p>
+                  {el.answers.map((ans) => {
+                    return (
+                      <div>
+                        <p>{ans}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </>
+          <button className="start" onClick={startTrivia}>
+            Start
+          </button>
+        </div>
       ) : null}
 
       {!gameOver ? <p className="score">Score:{score} </p> : null}
 
-      {loading && <p>Loading Questions...</p>}
+      {loading && <img src={spinner} alt="loading" />}
 
       {!loading && !gameOver && (
         <QuestionCard
@@ -99,7 +118,11 @@ const App: React.FC = () => {
       !loading &&
       userAnswers.length === number + 1 &&
       number !== TOTALQUESTIONS - 1 ? (
-        <button className="next" onClick={nextQuestion}>
+        <button
+          className="next"
+          onClick={nextQuestion}
+          disabled={userAnswers[number] ? false : true}
+        >
           Next Question
         </button>
       ) : null}
