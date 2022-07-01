@@ -52,7 +52,7 @@ export const Wrapper = styled.div`
   }
 
   .score {
-    color: #fff;
+    color: #000;
     font-size: 2rem;
     margin: 0;
   }
@@ -60,12 +60,13 @@ export const Wrapper = styled.div`
   .btnStart,
   .btnNext {
     cursor: pointer;
-    background: linear-gradient(180deg, #fff, #ffcc91);
-    border: 2px solid #d38558;
+    background-color:#073e57;
     border-radius: 10px;
+    border:none;
     height: 40px;
     margin: 20px 0;
-    padding: 0 40px;
+    padding: 0 30px;
+    color:#fff;
   }
 
   .btnStart {
