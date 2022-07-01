@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import bgimage from "./images/jaromir-kalina.jpg";
+import bgimage from "./images/resul-mentes.jpg";
 
 export const GlobalStyle = createGlobalStyle`
 
