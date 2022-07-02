@@ -17,6 +17,7 @@ export enum Difficulty {
 
 export type QuestionState = Question & { answers: string[] };
 
+//fetching API
 export const fetchQuizQuestions = async (
   amount: number,
   difficulty: Difficulty

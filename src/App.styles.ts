@@ -73,3 +73,14 @@ export const Wrapper = styled.div`
     max-width: 200px;
   }
 `;
+
+export const StartBtnDiv = styled.div`
+
+
+width: 420px;
+display:flex;
+align-items:center;
+justify-content:center;
+
+
+`

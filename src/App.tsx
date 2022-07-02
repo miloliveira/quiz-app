@@ -1,21 +1,25 @@
 import React, { useState } from "react";
+
 import { fetchQuizQuestions } from "./API";
-import spinner from "./images/spinner_loading.gif";
+
 //importing components
 import QuestionCard from "./components/QuestionCard";
 
 //importing types
 import { QuestionState, Difficulty } from "./API";
+
 //importing styles
-import { GlobalStyle, Wrapper } from "./App.styles";
+import { GlobalStyle, Wrapper, StartBtnDiv } from "./App.styles";
 import { InnerWrapper } from "./components/QuestionCard.styles";
+
+//
 export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
   correctAnswer: string;
 };
-
+//defining the total number  of questions
 const TOTALQUESTIONS = 10;
 
 const App: React.FC = () => {
@@ -26,24 +30,23 @@ const App: React.FC = () => {
   const [score, setScore] = useState(0);
   const [gameOver, SetGameOver] = useState(true);
 
-  console.log("questions ar:", questions);
-  console.log("user Answers are:", userAnswers);
+  //Start Game function
   const startTrivia = async () => {
     setLoading(true);
     SetGameOver(false);
-
+    //fetching API
     const newQuestions = await fetchQuizQuestions(
       TOTALQUESTIONS,
       Difficulty.EASY
     );
-
+    //setting default values of variables
     setQuestions(newQuestions);
     setScore(0);
     setUserAnswers([]);
     setNumber(0);
     setLoading(false);
   };
-
+  //check if answer is correct function
   const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!gameOver) {
       //user answer
@@ -63,7 +66,7 @@ const App: React.FC = () => {
       setUserAnswers((prev) => [...prev, answerObject]);
     }
   };
-
+  // get the next question function
   const nextQuestion = () => {
     const nextQuestion = number + 1;
     if (nextQuestion === TOTALQUESTIONS) {
@@ -80,16 +83,16 @@ const App: React.FC = () => {
         <h1>Quiz.me</h1>
 
         {gameOver || userAnswers.length === TOTALQUESTIONS ? (
-          <div>
+          <StartBtnDiv>
             <button className="btnStart" onClick={startTrivia}>
               Start
             </button>
-          </div>
+          </StartBtnDiv>
         ) : null}
 
         {!gameOver ? <p className="score">Score: {score} </p> : null}
 
-        {loading && <img src={spinner} alt="loading" />}
+        {loading && <p>Loading the questions ...</p>}
 
         {!loading && !gameOver && (
           <InnerWrapper>
