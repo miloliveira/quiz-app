@@ -31,6 +31,12 @@ justify-content: center;
     font-family:"Catamaran", sans-serif;
 }
 
+@media (max-width: 800px) {
+  
+  
+}
+
+
 
 `;
 
@@ -42,45 +48,53 @@ export const Wrapper = styled.div`
   > p {
     color: black;
   }
-  > h1 {
-    font-family: Fascinate Inline;
-
-    font-size: 70px;
-    font-weight: 400;
-    text-align: center;
-    margin: 20px;
-  }
-
-  .score {
-    color: #000;
-    font-size: 2rem;
-    margin: 0;
-  }
 
   .btnStart,
   .btnNext {
     cursor: pointer;
-    background-color:#073e57;
+    background-color: #073e57;
     border-radius: 10px;
-    border:none;
+    border: none;
     height: 40px;
-    margin: 20px 0;
     padding: 0 30px;
-    color:#fff;
+    color: #fff;
   }
 
-  .btnStart {
-    max-width: 200px;
+  .btnNext {
+    margin: 15px 0;
+  }
+`;
+
+export const Title = styled.h1`
+  font-family: Fascinate Inline;
+  font-size: 70px;
+  font-weight: 400;
+  text-align: center;
+  margin: 20px;
+  border: none;
+  padding: 0;
+  @media (max-width: 800px) {
+    font-size: 50px;
+  }
+`;
+
+export const Score = styled.p`
+  color: #000;
+  font-size: 2rem;
+  margin: 0;
+  border: none;
+  @media (max-width: 800px) {
+    font-size: 1.5rem;
   }
 `;
 
 export const StartBtnDiv = styled.div`
-
-
-width: 420px;
-display:flex;
-align-items:center;
-justify-content:center;
-
-
-`
+  width: 420px;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+`;

@@ -9,7 +9,7 @@ import QuestionCard from "./components/QuestionCard";
 import { QuestionState, Difficulty } from "./API";
 
 //importing styles
-import { GlobalStyle, Wrapper, StartBtnDiv } from "./App.styles";
+import { GlobalStyle, Wrapper, StartBtnDiv, Title, Score } from "./App.styles";
 import { InnerWrapper } from "./components/QuestionCard.styles";
 
 //
@@ -80,7 +80,7 @@ const App: React.FC = () => {
     <div>
       <GlobalStyle />
       <Wrapper>
-        <h1>Quiz.me</h1>
+        <Title>Quiz.me</Title>
 
         {gameOver || userAnswers.length === TOTALQUESTIONS ? (
           <StartBtnDiv>
@@ -90,7 +90,7 @@ const App: React.FC = () => {
           </StartBtnDiv>
         ) : null}
 
-        {!gameOver ? <p className="score">Score: {score} </p> : null}
+        {!gameOver ? <Score>Score: {score} </Score> : null}
 
         {loading && <p>Loading the questions ...</p>}
 

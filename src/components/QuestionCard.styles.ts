@@ -11,6 +11,13 @@ export const InnerWrapper = styled.div`
   p {
     font-size: 1rem;
   }
+
+  @media (max-width: 800px) {
+    width: 70vw;
+    
+  }
+
+
 `;
 
 type ButtonWrapperProps = {
